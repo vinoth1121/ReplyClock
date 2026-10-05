@@ -1,0 +1,14 @@
+node_modules/
+.next/
+out/
+dist/
+coverage/
+.vercel/
+*.tsbuildinfo
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+next-env.d.ts
+.DS_Store
+*.log
+.claude/

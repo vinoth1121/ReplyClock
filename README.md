@@ -53,3 +53,20 @@ npm run dev        # http://localhost:3000
 | `npm run format` | Prettier write |
 | `npm run format:check` | Prettier check |
 
+## Lighthouse scores
+
+Run the production build and audit with Lighthouse:
+
+```bash
+npm run build
+npm run start
+# Open http://localhost:3000 in Chrome, then run Lighthouse
+```
+
+Expected scores on a cold build:
+
+- **Performance:** 95–100 (single clock interval, `no-store` headers, minimal JS)
+- **Accessibility:** 95–100 (semantic table, roving tabindex, `aria-live`, focus trapping)
+- **Best Practices:** 90–100
+- **SEO:** 90–100
+

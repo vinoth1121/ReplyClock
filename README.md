@@ -4,3 +4,5 @@
 
 *A speed-to-lead console for WhatsApp sales teams that makes first-reply time the primary metric, not an afterthought.*
 
+![ReplyClock demo](public/demo.gif)
+

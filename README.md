@@ -70,3 +70,12 @@ Expected scores on a cold build:
 - **Best Practices:** 90–100
 - **SEO:** 90–100
 
+## What I'd build next
+
+- **Persist mutations.** Stage changes, owner assignments, notes, and recorded replies live in the reducer and vanish on refresh. A real store with the same reducer shape on top.
+- **Real WhatsApp Business API ingestion.** Replace the seeded generator with webhook ingestion so leads arrive live.
+- **Per-owner SLA targets.** The team has one threshold today. Real floors run different targets per role.
+- **Breach alerts.** Send a WhatsApp message to a team group the moment a lead crosses the line.
+- **CSV export.** With filters applied, an operator needs to hand the queue to someone else.
+- **Multi-tenant workspaces.** Per-workspace ad accounts, members, and SLA targets.
+

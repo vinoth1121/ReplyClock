@@ -2,9 +2,9 @@
 
 **Live demo:** [https://replyclock.vercel.app](https://replyclock.vercel.app)
 
-*A speed-to-lead console for WhatsApp sales teams that makes first-reply time the primary metric, not an afterthought.*
-
 ![ReplyClock demo](public/demo.gif)
+
+*A speed-to-lead console for WhatsApp sales teams that makes first-reply time the primary metric, not an afterthought.*
 
 ## Why this is different
 
@@ -70,7 +70,7 @@ Expected scores on a cold build:
 - **Best Practices:** 90–100
 - **SEO:** 90–100
 
-## What I'd build next
+## What I’d build next
 
 - **Persist mutations.** Stage changes, owner assignments, notes, and recorded replies live in the reducer and vanish on refresh. A real store with the same reducer shape on top.
 - **Real WhatsApp Business API ingestion.** Replace the seeded generator with webhook ingestion so leads arrive live.
@@ -96,3 +96,4 @@ Expected scores on a cold build:
 - `sla.test.ts` (59) — threshold derivation and clamping, exact `>=` boundaries at warn and breach, the rule that a replied lead is always `ok`, that `firstReplyAt` freezes the timer, true-median calculation, and that `sortByUrgency` / `filterLeads` / `sortLeads` never mutate their input arrays.
 - `commands.test.ts` (133) — every command, both `=` and `:` separators, case and whitespace tolerance, SLA range validation, multi-word values, did-you-mean suggestions, and a no-throw sweep across malformed input.
 - `format.test.ts` (54) — `en-IN` rupee grouping, the wait-format ladder, phone normalisation, and safe fallbacks for unparseable values.
+

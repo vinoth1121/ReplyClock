@@ -79,3 +79,20 @@ Expected scores on a cold build:
 - **CSV export.** With filters applied, an operator needs to hand the queue to someone else.
 - **Multi-tenant workspaces.** Per-workspace ad accounts, members, and SLA targets.
 
+## Accessibility
+
+- Everything is reachable by keyboard, with a visible 2px focus ring on every interactive element.
+- The lead queue is a semantic `<table>` with roving `tabindex` and `aria-selected`.
+- Breach announcements go through an `aria-live` region that diffs against previously announced leads.
+- The drawer, composer, invoice and help overlay implement real focus trapping, Escape handling and focus restoration.
+- Both Recharts charts carry a computed text alternative describing the shape and key findings.
+- The CRT scanline overlay is opt-in and forced off under `prefers-reduced-motion: reduce`.
+- Colour is never the only signal: breach and warning states also carry text markers.
+
+## Testing
+
+246 unit tests across three files cover the modules where a bug would be silent and expensive:
+
+- `sla.test.ts` (59) — threshold derivation and clamping, exact `>=` boundaries at warn and breach, the rule that a replied lead is always `ok`, that `firstReplyAt` freezes the timer, true-median calculation, and that `sortByUrgency` / `filterLeads` / `sortLeads` never mutate their input arrays.
+- `commands.test.ts` (133) — every command, both `=` and `:` separators, case and whitespace tolerance, SLA range validation, multi-word values, did-you-mean suggestions, and a no-throw sweep across malformed input.
+- `format.test.ts` (54) — `en-IN` rupee grouping, the wait-format ladder, phone normalisation, and safe fallbacks for unparseable values.

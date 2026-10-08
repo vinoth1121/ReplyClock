@@ -18,3 +18,15 @@
 
 **Keyboard-first, not keyboard-only.** `j`/`k` walk the queue, `g` then `q`/`f`/`s`/`r` jumps panes, `/` focuses the command bar, `?` opens help. Everything is also reachable by mouse.
 
+## Stack
+
+| Layer | Choice |
+|-------|--------|
+| Framework | Next.js 14 (App Router) |
+| UI | React 18 + Tailwind CSS |
+| Font | JetBrains Mono |
+| Charts | Recharts (source + response) |
+| Testing | Vitest (246 unit tests) |
+| Linting | ESLint + Prettier |
+| No database | Seeded `mulberry32` generator |
+

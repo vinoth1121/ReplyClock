@@ -30,3 +30,26 @@
 | Linting | ESLint + Prettier |
 | No database | Seeded `mulberry32` generator |
 
+## Run locally
+
+Requires Node 18.17 or newer.
+
+```bash
+git clone https://github.com/vinoth1121/ReplyClock.git
+cd ReplyClock
+npm install
+npm run dev        # http://localhost:3000
+```
+
+| Script | Purpose |
+|--------|---------|
+| `npm run dev` | dev server |
+| `npm run build` | production build |
+| `npm run start` | serve the production build |
+| `npm test` | run the unit tests once |
+| `npm run test:watch` | run tests in watch mode |
+| `npm run typecheck` | `tsc --noEmit` |
+| `npm run lint` | ESLint via `next lint` |
+| `npm run format` | Prettier write |
+| `npm run format:check` | Prettier check |
+

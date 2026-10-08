@@ -1,6 +1,6 @@
 # ReplyClock
 
-**Live demo:** [https://replyclock.vercel.app](https://replyclock.vercel.app)
+**Live demo:** Not currently deployed on Vercel (https://replyclock.vercel.app returns incorrect content). Verified source: https://github.com/vinoth1121/ReplyClock
 
 ![ReplyClock demo](public/demo.gif)
 

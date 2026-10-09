@@ -37,6 +37,7 @@ import { InvoiceStub } from '@/components/drawer/InvoiceStub';
 import { CommandBar } from '@/components/commandbar/CommandBar';
 import type { CommandOutputLine } from '@/components/commandbar/CommandBar';
 import { HelpOverlay } from '@/components/HelpOverlay';
+import { readUrlState, useUrlSync } from '@/lib/useUrlState';
 
 /** The single clock interval. No other component in the console owns a timer. */
 const TICK_MS = 1000;
@@ -267,6 +268,16 @@ const INITIAL_STATE: ConsoleState = {
   error: null,
 };
 
+function getInitialState(): ConsoleState {
+  if (typeof window === 'undefined') return INITIAL_STATE;
+  const urlState = readUrlState(window.location.search);
+  return {
+    ...INITIAL_STATE,
+    ...urlState,
+    filter: { ...INITIAL_STATE.filter, ...(urlState.filter ?? {}) },
+  };
+}
+
 /** Only safe inside an event handler or effect, never during render. */
 function isoNow(): string {
   return new Date().toISOString();
@@ -299,7 +310,7 @@ interface ViewSlice {
 }
 
 export default function ConsolePage(): JSX.Element {
-  const [state, dispatch] = useReducer(consoleReducer, INITIAL_STATE);
+  const [state, dispatch] = useReducer(consoleReducer, undefined, getInitialState);
   const [now, setNow] = useState(0);
   const [fetchKey, setFetchKey] = useState(0);
   const [liveMessage, setLiveMessage] = useState('');
@@ -416,6 +427,14 @@ export default function ConsolePage(): JSX.Element {
       pendingChord: state.pendingChord,
       now: clock,
     };
+  });
+
+  /** 9. Sync the primary view state to the URL so a filtered or SLA-tuned
+   *  view is a shareable link. */
+  useUrlSync({
+    slaMinutes: state.slaMinutes,
+    sort: state.sort,
+    filter: state.filter,
   });
 
   /** 8. Announce only newly breached leads, at most 3 per tick. */

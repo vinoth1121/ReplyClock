@@ -1,6 +1,6 @@
 # ReplyClock
 
-**Live demo:** [https://vinoth1121.github.io/ReplyClock/](https://vinoth1121.github.io/ReplyClock/)
+**Live demo:** [https://replyclock-console.vercel.app](https://replyclock-console.vercel.app)
 
 ![ReplyClock timeline](public/demo.gif)
 

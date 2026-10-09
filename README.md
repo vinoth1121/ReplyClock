@@ -2,7 +2,7 @@
 
 **Live demo:** [https://replyclock-console.vercel.app](https://replyclock-console.vercel.app)
 
-![ReplyClock timeline](public/demo.gif)
+![ReplyClock console — live queue with running first-reply timers and SLA breach markers](public/replyclock.png)
 
 *A speed-to-lead console for WhatsApp sales teams that makes first-reply time the primary metric, not an afterthought.*
 

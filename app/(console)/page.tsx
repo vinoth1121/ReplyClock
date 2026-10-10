@@ -371,7 +371,7 @@ export default function ConsolePage(): JSX.Element {
   useEffect(() => {
     if (process.env.NODE_ENV !== 'development') return;
     void import('@/mocks/browser').then(({ worker }) => {
-      void worker.start({ onUnhandledFrame: 'warn' });
+      void worker.start({ onUnhandledRequest: 'warn' });
     });
   }, []);
 

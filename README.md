@@ -22,7 +22,7 @@ ReplyClock puts the clock on screen as the primary object. The queue is sorted b
 
 **Optimistic updates.** Stage changes, owner assignments, notes, and recorded replies apply instantly in the client reducer before any server round-trip. The UI never waits on a network call to reflect what the operator just did.
 
-**MSW-backed realistic API.** The demo runs on a Mock Service Worker that intercepts `/api/leads` and `/api/stats` in the browser and serves the same deterministic, seeded dataset the server routes produce. No backend, no database, no network dependency — just realistic latency and realistic data.
+**Mock Service Worker in development.** `mocks/handlers.ts` intercepts `/api/leads` and `/api/stats` in the browser and serves the same deterministic dataset the server routes generate, so the console runs from `npm run dev` without any backend or database. `mocks/server.ts` exposes the same handlers to Node. Production (Vercel) is served by the real route handlers in `app/api/`, which produce the identical seed.
 
 **The WhatsApp reply flow actually works.** Pick one of four templates, fill `{name}`, `{product}`, and `{amount_inr}`, read the exact text in a live preview, then open a real `https://wa.me/<number>?text=<encoded>` link. Opening WhatsApp records the first reply, which stops the SLA timer. A missing variable blocks the send and reports the missing field by name.
 

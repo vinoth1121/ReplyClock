@@ -362,6 +362,16 @@ export default function ConsolePage(): JSX.Element {
     };
   }, [fetchKey]);
 
+  /** 0. In development the seeded dataset is served by MSW in-browser, so the
+   *  console runs without the API routes. Production (Vercel) uses the real
+   *  route handlers, which generate the identical seed. */
+  useEffect(() => {
+    if (process.env.NODE_ENV !== 'development') return;
+    void import('@/mocks/browser').then(({ worker }) => {
+      void worker.start({ onUnhandledFrame: 'warn' });
+    });
+  }, []);
+
   /** 2. The one and only timer. Children receive `now`, they never start one. */
   useEffect(() => {
     setNow(Date.now());

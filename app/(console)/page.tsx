@@ -338,9 +338,12 @@ export default function ConsolePage(): JSX.Element {
     dispatch({ type: 'SET_LOADING' });
     void (async () => {
       try {
+        const slaParams = new URLSearchParams(window.location.search).get('sla');
+        const statsUrl =
+          slaParams === null ? '/api/stats' : `/api/stats?sla=${encodeURIComponent(slaParams)}`;
         const [leadsResponse, statsResponse] = await Promise.all([
           fetch('/api/leads', { cache: 'no-store' }),
-          fetch('/api/stats', { cache: 'no-store' }),
+          fetch(statsUrl, { cache: 'no-store' }),
         ]);
         if (!leadsResponse.ok || !statsResponse.ok) {
           throw new Error(
